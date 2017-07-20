@@ -10,12 +10,25 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
         this.message = 'Hello!';
+        this.users = [
+            { id: 25, name: 'Perry', username: 'pgowdy' },
+            { id: 26, name: 'Kirby', username: 'ckuiper' },
+            { id: 27, name: 'Nancy', username: 'nkennedy' },
+            { id: 28, name: 'Crab', username: 'ccranston' }
+        ];
     }
+    AppComponent.prototype.selectUser = function (user) {
+        this.activeUser = user;
+        console.log(this.activeUser);
+    };
+    AppComponent.prototype.onUserCreated = function (event) {
+        this.users.push(event.user);
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <header>\n        <nav class=\"navbar navbar-inverse\">\n            <div class=\"navbar-header\">\n                <a href=\"/\" class=\"navbar-brand\">My Angular 2 App!</a>\n            </div>\n        </nav>\n    </header>\n\n    <div class=\"jumbotron\">\n        <h1>Welcome to Our App!</h1>\n        <p>{{message}}</p>\n    </div>\n\n    <footer class=\"text-center\">\n        Copyright &copy; 2016\n    </footer>\n\n    ",
-            styles: ["\n        .jumbotron { box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2); }\n    "]
+            templateUrl: "./app/app.component.html",
+            styleUrls: ["./app/app.component.css"]
         })
     ], AppComponent);
     return AppComponent;
